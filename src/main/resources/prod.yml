@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: "jdbc:mysql://localhost/prod"
+    username: "prod"
+    password: "prod"
+
+#### ELK Logging
+elk:
+  logging:
+    rabbitmq:
+      hostname: ${pres.elk.logging.rabbitmq.hostname}
+      port: 5672
+      username: ${pres.elk.logging.rabbitmq.username}
+      password: ${pres.elk.logging.rabbitmq.password}
+      queueName: ${pres.elk.logging.rabbitmq.queueName}
+      routingKey: ${pres.elk.logging.rabbitmq.routingKey}
+      enabled: ${pres.elk.logging.rabbitmq.enabled}
+      projectVersion: '@project.version@'

@@ -1,0 +1,41 @@
+server:
+  port: 8081
+## Select profile
+spring:
+  application:
+    name: "customers"
+  profiles:
+    group:
+      "dev": "dev"
+      "prod": "prod"
+  cloud:
+    vault:
+      authentication: APPROLE
+      app-role:
+        role-id: ${role-id}
+        secret-id: ${secret-id}
+        role: pres-read
+        app-role-path: approle
+      uri: ${VAULT_URL}
+      connection-timeout: 5000
+      read-timeout: 15000
+      kv:
+        enabled: true
+        backend: secret
+        application-name: app/pres
+  config:
+    import: vault://secret/app/pres/
+
+---
+spring:
+  config:
+    activate:
+      on-profile: "dev"
+    import: dev.yml
+---
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+    import: prod.yml
+
