@@ -12,7 +12,4 @@ elk:
       port: 5672
       username: ${pres.elk.logging.rabbitmq.username}
       password: ${pres.elk.logging.rabbitmq.password}
-      queueName: ${pres.elk.logging.rabbitmq.queueName}
-      routingKey: ${pres.elk.logging.rabbitmq.routingKey}
-      enabled: ${pres.elk.logging.rabbitmq.enabled}
       projectVersion: '@project.version@'

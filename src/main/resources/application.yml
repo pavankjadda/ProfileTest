@@ -1,21 +1,12 @@
 server:
   port: 8081
-## Select profile
 spring:
   application:
-    name: "customers"
-  profiles:
-    group:
-      "dev": "dev"
-      "prod": "prod"
+    name: pres
+
   cloud:
     vault:
-      authentication: APPROLE
-      app-role:
-        role-id: ${role-id}
-        secret-id: ${secret-id}
-        role: pres-read
-        app-role-path: approle
+      authentication: TOKEN
       uri: ${VAULT_URL}
       connection-timeout: 5000
       read-timeout: 15000
@@ -23,8 +14,10 @@ spring:
         enabled: true
         backend: secret
         application-name: app/pres
+      token: ${TOKEN}
   config:
-    import: vault://secret/app/pres/
+    import: vault://secret/app/pres
+
 
 ---
 spring:

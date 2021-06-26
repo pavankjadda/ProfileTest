@@ -7,8 +7,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConfigurationProperties(prefix = "elk.logging.rabbitmq")
 @Data
-public class ConfigTest
+public class ElkRabbitmqProperties
 {
+	String host;
 	String username;
 	String password;
 }
